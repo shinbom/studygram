@@ -1,0 +1,18 @@
+[
+    [
+        {
+            "uploadDate" : "2021-03-10",
+            "imageUrl" : ["/images/a1.jpg", "/images/a1.jpg", "/images/a1.jpg"],
+            "btnStatus" : false,
+            "likeCount" : 2,
+            "sadCount" : 0
+        },
+        {
+            "uploadDate" : "2021-03-11",
+            "imageUrl" : ["/images/a2.jpg", "/images/a2.jpg", "/images/a2.jpg"],
+            "btnStatus" : false,
+            "likeCount" : 100,
+            "sadCount" : 0
+        }
+    ]
+]
