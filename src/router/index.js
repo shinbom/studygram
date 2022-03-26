@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import store from '../store/index';
+import store from '../store/index';
 import Login from '../views/Login.vue'
 import List from '../views/List.vue'
 import Join from '../views/Join.vue'
@@ -31,5 +31,12 @@ const router = new VueRouter({
   routes
 })
 
+console.log(store);
+// router.beforeEach( () => {
+//   console.log(store.state.isAuth);
+// });
+
 
 export default router
+
+

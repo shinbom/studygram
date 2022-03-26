@@ -28,6 +28,11 @@ import {mapState, mapMutations} from 'vuex';
 
 export default{
   name : '',
+  mounted() {
+    if ( window.sessionStorage.getItem('userInfo') ) {
+      this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
+    }
+  },
   computed : {
     ...mapState(['isAuth']),
   },

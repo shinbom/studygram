@@ -47,6 +47,10 @@ export default{
       let commentList = res.data;
       this.comment = commentList;
     });
+    if ( window.sessionStorage.getItem('userInfo') ) {
+      console.log('has Session');
+      this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
+    }
   },
   computed : {
     ...mapState(['userInfo']),

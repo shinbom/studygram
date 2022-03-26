@@ -1,24 +1,19 @@
-# webpage
+# StudyGram
 
-## Project setup
+## 프로젝트 목표
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+인스타그램 디자인을 본따, 스터디그룹용 페이지를 제작하였음
 ```
 
-### Compiles and minifies for production
+### 사용기술
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
+1. Vue.js
+2. Vue Router
+3. Axios
+4. Scss
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 특이사항
+```
+로그인 상태를 체크하기 위해서, 로그인 전, 후에 Session Storage에 데이터를 삽입하도록 처리하였음.
+```

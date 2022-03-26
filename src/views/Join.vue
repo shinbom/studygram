@@ -9,8 +9,8 @@
             <li>
                 <label for="userPw">암호</label>
                 <div class="password_wrap">
-                    <input type="password" id="userPw" v-model="userInfo.userPw">
-                    <input type="password" id="userPw" v-model="userInfo.repeatPw">
+                    <input type="password" id="userPw" v-model="userInfo.userPw" @change="checkPw">
+                    <input type="password" id="userPw" v-model="userInfo.repeatPw" @change="repeatPwCheck">
                 </div>
             </li>
             <li>
@@ -48,6 +48,16 @@ export default ({
     methods : {
         getSelectOption(item) {
             this.userInfo.option = item;
+        },
+        checkPw() {
+            console.log(this.userInfo.userPw);
+        },
+        repeatPwCheck() {
+            if(this.userInfo.userPw == this.userInfo.repeatPw){
+                console.log('맞아용!');  
+            } else {
+                console.log('안 맞는뒤');
+            }
         }
     }
 })
