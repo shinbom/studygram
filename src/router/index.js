@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store/index';
 import Login from '../views/Login.vue'
 import List from '../views/List.vue'
 import Join from '../views/Join.vue'
@@ -17,6 +16,7 @@ const routes = [
     path: '/list/:id',
     name : 'userImageList',
     component :  List,
+
   },
   {
     path : '/join',
@@ -31,7 +31,7 @@ const router = new VueRouter({
   routes
 })
 
-console.log(store);
+
 // router.beforeEach( () => {
 //   console.log(store.state.isAuth);
 // });

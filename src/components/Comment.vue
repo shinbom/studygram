@@ -1,18 +1,19 @@
 <template>
-    <div class="comment">
-        <ul>
-            <li v-for="(item, index) in comment" :key="index">
-                <span class="user">{{item.id}}</span>
-                <span class="desc">{{item.comment}}</span>
-                <span class="date">{{item.uploadDate}}</span>
-                <button type="button" @click="commentToggle">답글달기</button>
-                <ul class="replayComment" v-show="commentStatus">
-                    <li>
-                        <span class="user">{{userInfo.nickName}}</span>
-                        <input type="text">
-                        <button type="button" class="btn">확인</button>
-                    </li>
-                </ul>
+    <div class="comment_wrap">
+        <div class="comment">
+            <ul>
+                <li v-for="(item, index) in comment" :key="index">
+                    <span class="user">{{item.id}}</span>
+                    <span class="desc">{{item.comment}}</span>
+                    <span class="date">{{item.uploadDate}}</span>
+                </li>
+            </ul>
+            {{updateReplyComment}}
+        </div>
+        <ul class="replyComment">
+            <li>
+                <input type="text" v-model="replyComment">
+                <button type="button" class="btn" @click="updateComment">확인</button>
             </li>
         </ul>
     </div>
@@ -23,20 +24,24 @@ import {mapState} from 'vuex';
 
 export default {
     name : 'comment',
-    data() {
+    data () {
         return {
-            commentStatus : false 
+            replyComment : '',
+            replyCommentList : []
         }
     },
     computed : {
-        ...mapState( ['userInfo'])
+        ...mapState( ['userInfo']),
+        updateReplyComment () {
+            return this.replyCommentList.length ; 
+        }
     },
     props : {
         comment : Array
     },
     methods : {
-        commentToggle() {
-            this.commentStatus = !this.commentStatus;
+        updateComment() {
+            this.replyCommentList.push(this.replyComment);
         }
     }
 }
