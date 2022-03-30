@@ -4,6 +4,7 @@
       {{userInfo.nickName}}님 안녕하세요.
     </header>
     <main>
+      <chart></chart>
       <ul>
         <li v-for="(item, index) in imageList" :key="item[index]">
           <figure class="image_thumbnail">
@@ -23,14 +24,17 @@
         </li>
       </ul>
     </main>
+    <image-upload></image-upload>
   </div>
 </template>
 
 <script>
 import {Fetch_Images, Fetch_Comments} from '../api/index';
 import {mapState} from 'vuex';
+import Chart from '../components/Chart.vue';
 import Comment from '../components/Comment.vue';
 import Slide from '../components/Slide.vue';
+import ImageUpload from '../components/ImageUpload.vue';
 
 export default{
   data () {
@@ -48,7 +52,6 @@ export default{
       this.comment = commentList;
     });
     if ( window.sessionStorage.getItem('userInfo') ) {
-      console.log('has Session');
       this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
     }
   },
@@ -57,7 +60,9 @@ export default{
   },
   components : {
     Comment,
-    Slide
+    Slide,
+    Chart,
+    ImageUpload
   },
   methods : {
     setEmotion (index) {
