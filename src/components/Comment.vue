@@ -57,7 +57,7 @@ export default {
     methods : {
         updateComment() {
             const year = new Date().getFullYear();
-            let month = new Date().getMonth();
+            let month = new Date().getMonth() + 1;
             let day = new Date().getDate();
             if(month < 10) {
                 month = `0${month}` 
@@ -78,7 +78,7 @@ export default {
         getTagList() {
             if(this.replyComment.match(/@[가-하a-zA-Z]*/g)){
                 this.tagStatus = true;
-            } 
+            }
         },
         setTag(event) {
             let tagText = event.target.textContent;

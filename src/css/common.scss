@@ -100,6 +100,7 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
         left:0;
         z-index:99;
         background-color:#fff;
+        border-bottom:1px solid #ededed;
     }
     nav{
         display:flex;
@@ -260,16 +261,14 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
                 font-size:12px;
                 &.month{
                     display:inline-block;
-                    width:20px;
-                    height:20px;
-                    line-height:20px;
+                    width:30px;
+                    height:30px;
+                    margin:10px 0;
+                    line-height:30px;
                     border-radius:50%;
                     box-sizing:border-box;
                     background-color:#000;
                     color:#fff;
-                }
-                &.desc{
-                    padding-top:10px;
                 }
             }
             &.correct{
