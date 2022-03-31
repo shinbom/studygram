@@ -8,6 +8,7 @@
       <ul>
         <li v-for="(item, index) in imageList" :key="item[index]">
           <figure class="image_thumbnail">
+            <span class="week">{{item.week}}</span>
             <slide :slideList="item.imageUrl"></slide>
           </figure>
           <div class="list_emotion">

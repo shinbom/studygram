@@ -1,12 +1,12 @@
 <template>
     <div id="chart">
-        <div>
-            <button type="button">이번 주</button>
+        <div class="weekend_calendar">
+            <button type="button" class="prev" aria-label="이번 주" ></button>
             <p>2022-03-04 ~ 2022-03-11</p>
-            <button type="button">다음 주</button>
+            <button type="button" class="next" aria-label="다음 주"></button>
         </div>
         <ul>
-            <li v-for="(item, index) in weekend" :key="index" :class="{'today' : item.today === true, 'correct' : item.studyStatus === true, 'error' : item.studyStatus === false}">
+            <li v-for="(item, index) in weekends" :key="index" :class="{'today' : item.today === true, 'correct' : item.studyStatus === true, 'error' : item.studyStatus === false}">
                 <span class="month">{{item.name}}</span>
                 <span class="desc" v-if="item.studyStatus">PASS</span>
                 <span class="desc" v-else>FAIL</span>
@@ -16,25 +16,26 @@
 </template>
 
 <script>
+
 export default {
     name : 'Chart',
     data () {
         return {
-            weekend : [
+            weekends : [
                 {
                     name : '월',
-                    studyStatus : false,
+                    studyStatus : true,
                     today : false
                 },
                 {
                     name : '화',
-                    studyStatus : false,
+                    studyStatus : true,
                     today : false
                 },
                 {
                     name : '수',
-                    studyStatus : true,
-                    today : true
+                    studyStatus : false,
+                    today : false
                 },
                 {
                     name : '목',
@@ -52,6 +53,9 @@ export default {
         }
     },
     created () {
+        // 오늘 요일 체크
+        let today = new Date().getDay() - 1;
+        this.weekends[today].today = true;
     }
 }
 </script>

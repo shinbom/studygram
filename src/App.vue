@@ -4,7 +4,7 @@
       <div class="box">
         <nav>
           <h1>
-            <router-link to="/">StudyGroup</router-link>
+            <router-link to="/" @click.native="goMain">StudyGroup</router-link>
           </h1>
           <ul class="utils">
             <li>
@@ -34,10 +34,21 @@ export default{
     }
   },
   computed : {
-    ...mapState(['isAuth']),
+    ...mapState(['userInfo', 'isAuth']),
   },
   methods : {
     ...mapMutations(['logout']),
+    goMain(){
+      if(this.isAuth == true) {
+        this.$router.push({
+          path : `/list/${this.userInfo.id}`,
+        })
+      } else {
+        this.$router.push({
+          path : `/`,
+        })
+      }
+    },
     setLogout() {
       this.$store.commit('logout');
     }

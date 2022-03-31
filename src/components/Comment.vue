@@ -76,13 +76,9 @@ export default {
             }
         },
         getTagList() {
-            if(this.replyComment.match(/@/g)){
+            if(this.replyComment.match(/@[가-하a-zA-Z]*/g)){
                 this.tagStatus = true;
             } 
-
-            if (this.replyComment.match(/@[a-zA-Z가-하]/g)){
-                this.tagStatus = false;
-            }
         },
         setTag(event) {
             let tagText = event.target.textContent;

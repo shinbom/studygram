@@ -21,22 +21,20 @@
             </div>
             <ul class="slide_btns">
                 <li>
-                    <button type="button" @click="slidePrev" class="prev" v-show="slideIndex !== 0">이전</button>
+                    <button type="button" @click="slidePrev" class="prev" v-show="slideIndex !== 0" aria-label="이전"></button>
                 </li>
                 <li>
-                    <button type="button" @click="slideNext" class="next" v-show="slideIndex !== (slideLength - 1)">다음</button>
+                    <button type="button" @click="slideNext" class="next" v-show="slideIndex !== (slideLength - 1)" aria-label="다음"></button>
                 </li>
             </ul>
         </div>
-        <button type="button" class="zoomBtn" @click="zoomImg">확대하기</button>
-        <transition name="fade">
-            <div class="zoomImgBox" v-show="zoomStatus">
-                <div>
-                    <img :src="slideList[slideIndex]" alt="">
-                    <button type="button" class="zoomClose" @click="zoomClose">닫기</button>
-                </div>
+        <button type="button" class="zoomBtn" @click="zoomImg" aria-label="확대하기"></button>
+        <div class="zoomImgBox" v-show="zoomStatus">
+            <div>
+                <img :src="slideList[slideIndex]" alt="">
+                <button type="button" class="close" @click="zoomImg" aria-label="닫기"></button>
             </div>
-        </transition>
+        </div>
     </div>
 </template>
 
@@ -65,11 +63,8 @@ export default {
             }
         },
         zoomImg() {
-            this.zoomStatus = true;
+            this.zoomStatus = !this.zoomStatus;
         },
-        zoomClose() {
-            this.zoomStatus = false;
-        }
     }
 }
 </script>

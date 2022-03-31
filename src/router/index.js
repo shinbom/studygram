@@ -31,12 +31,6 @@ const router = new VueRouter({
   routes
 })
 
-
-// router.beforeEach( () => {
-//   console.log(store.state.isAuth);
-// });
-
-
 export default router
 
 
