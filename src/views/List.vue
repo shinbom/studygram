@@ -4,9 +4,13 @@
       {{userInfo.nickName}}님 안녕하세요.
     </header>
     <main>
-      <chart></chart>
-      <ul>
-        <li v-for="(item, index) in imageList" :key="item[index]">
+      <chart :studyLists="imageList" @refreshList="refresh"></chart>
+      <div v-if="imageList.length == 0" class="no_list">
+          <img src="/images/not_found.png" alt="">
+          <p>학습 내용이 없습니다.<br>업로드 해주세요!</p>
+      </div>
+      <ul v-else>
+        <li v-for="(item, index) in imageList" :key="item[index]" >
           <figure class="image_thumbnail">
             <span class="week">{{item.week}}</span>
             <slide :slideList="item.imageUrl"></slide>
@@ -78,6 +82,9 @@ export default{
       } else {
         this.imageList[index].sadCount++
       }
+    },
+    refresh () {
+      this.imageList = [];
     }
   }
 }

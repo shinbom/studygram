@@ -19,8 +19,7 @@
 <script>
 import dayjs from 'dayjs';
 const weekOfYear = require('dayjs/plugin/weekOfYear');
-const locale = require('dayjs/locale/ko');
-console.log(locale);
+const locale = require('dayjs/locale/ko');// eslint-disable-line
 
 dayjs.extend(weekOfYear);
 dayjs.locale('ko');
@@ -66,8 +65,12 @@ export default {
             ],
         }
     },
-    created () {
+    props : {
+        studyLists : Array
+    },
+    mounted () {
         this.getCurrentWeek();
+        this.checkStudyStatus();            
     },
     computed : {
         setCurrentWeek() {
@@ -81,16 +84,37 @@ export default {
                 this.currentWeek[i].date = '';
                 // day는 일요일부터 시작함에 따라 i + 1
                 this.currentWeek[i].date = dayjs().week(this.weekNumber).day(i + 1).format('YYYY-MM-DD');
-                this.currentWeek[i].date === this.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false; 
+                this.currentWeek[i].date === this.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false;
             }
+        },
+        checkStudyStatus () {
+            setTimeout(() => {
+                console.log(this.studyLists.length);
+                for ( let i = 0; i < 5; i++) {
+                    
+                    if(this.studyLists.length == 0) {
+                        this.currentWeek[i].studyStatus = false;
+                    } else {
+                        if(this.studyLists[i].uploadDate === this.currentWeek[i].date) {
+                            this.currentWeek[i].studyStatus = true;
+                        } else {
+                            this.currentWeek[i].studyStatus = false;
+                        }
+                    }
+                }
+            }, 200);
         },
         prevWeeks() {
             this.weekNumber--;
             this.getCurrentWeek();
+            this.checkStudyStatus();
+            this.$emit('refreshList');
         },
         nextWeeks() {
             this.weekNumber++;
             this.getCurrentWeek();
+            this.checkStudyStatus();
+            this.$emit('refreshList');
         }
     }
 }

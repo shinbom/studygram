@@ -1,6 +1,6 @@
 <template>
     <div class="custom_select_wrap">
-        <button type="button" class="custom_select" @click="expandOption">{{selectedOption}}</button>
+        <button type="button" class="custom_select" :class="{active : optionStatus}" @click="expandOption">{{selectedOption}}</button>
         <ul v-if="optionStatus">
             <li v-for="(item, index) in optionList" :key="index">
                 <button type="button" @click="setOption(item)">{{item}}</button>

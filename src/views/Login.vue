@@ -33,7 +33,7 @@ export default {
 
     },
     onSubmit() {
-      if (this.userId =='test' && this.userPw == 'test' ) {
+      if (this.userId =='test' && this.userPw == 'test1234!!' ) {
         this.$store.commit('successLogin', this.userId);
         this.$store.dispatch('setUserInfo');
         this.$router.push({
