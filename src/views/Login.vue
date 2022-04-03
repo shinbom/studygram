@@ -1,17 +1,19 @@
 <template>
-  <div id="login">
-    <h2>로그인</h2>
-    <ul>
-      <li>
-          <label for="userId">아이디</label>
-          <input type="text" id="userId" v-model="userId" ref="userId" @input="checkId">
-      </li>
-      <li>
-          <label for="userPw">암호</label>
-          <input type="password" id="userPw" v-model="userPw">
-      </li>
-    </ul>
-    <button type="button" @click="onSubmit" class="btn">로그인</button>
+  <div id="login_wrap">
+    <div id="login">
+      <h2>로그인</h2>
+      <ul>
+        <li>
+            <label for="userId">아이디</label>
+            <input type="text" id="userId" v-model="userId" ref="userId" @input="checkId">
+        </li>
+        <li>
+            <label for="userPw">암호</label>
+            <input type="password" id="userPw" v-model="userPw">
+        </li>
+      </ul>
+      <button type="button" @click="onSubmit" class="btn">로그인</button>
+    </div>
   </div>
 </template>
 
