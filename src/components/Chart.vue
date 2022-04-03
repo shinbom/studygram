@@ -77,7 +77,6 @@ export default {
                 this.currentWeek[i].date = '';
                 // day는 일요일부터 시작함에 따라 i + 1
                 this.currentWeek[i].date = dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD');
-                console.log(dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD'))
                 this.currentWeek[i].date === this.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false;
             }
         },

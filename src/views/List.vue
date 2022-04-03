@@ -58,13 +58,11 @@ export default{
       weekInfo : {
         currentWeek : dayjs().week(),
         today : dayjs().format('YYYY-MM-DD'),
+        startDay : ""
       }
     }
   },
   mounted() {
-    Fetch_Images().then( (res) => {
-      this.imageList = res.data[0];
-    });
     Fetch_Comments().then ( (res) => {
       let commentList = res.data;
       this.comment = commentList;
@@ -72,6 +70,17 @@ export default{
     if ( window.sessionStorage.getItem('userInfo') ) {
       this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
     }
+
+    this.$nextTick(function () {
+      // 시작하는 주의 월요일 체크
+      this.weekInfo.startDay = dayjs().week(this.weekInfo.currentWeek).day(1).format('YYYY-MM-DD');
+
+      Fetch_Images().then((res) => {
+        const data = res.data;
+        localStorage.setItem('studyGramImages', JSON.stringify(data));
+        this.getImage();
+      });
+    })
   },
   computed : {
     ...mapState(['userInfo']),
@@ -83,6 +92,16 @@ export default{
     ImageUpload
   },
   methods : {
+    getImage() {
+      const data = JSON.parse(localStorage.getItem('studyGramImages'));
+      data.forEach((item)=> {
+        if(item.startDay == this.weekInfo.startDay) {
+          this.imageList = item.imageLists;
+        } else {
+          this.imageList = []
+        }
+      })
+    },
     setEmotion (index) {
       this.imageList[index].btnStatus = !this.imageList[index].btnStatus;  
     },
@@ -97,8 +116,9 @@ export default{
       }
     },
     refresh () {
-      this.imageList = [];
-    }
+      this.weekInfo.startDay = dayjs().week(this.weekInfo.currentWeek).day(1).format('YYYY-MM-DD');
+      this.getImage();
+    },
   }
 }
 </script>

@@ -1,6 +1,6 @@
 [
     {
-        "startDate" : "2022-03-28",
+        "startDay" : "2022-03-28",
         "imageLists" :[
             {
                 "uploadDate" : "2022-03-28",
@@ -12,6 +12,27 @@
             },
             {
                 "uploadDate" : "2022-03-29",
+                "week" : "화",
+                "imageUrl" : ["/images/a4.jpg"],
+                "btnStatus" : false,
+                "likeCount" : 10,
+                "sadCount" : 0
+            }
+        ]
+    },
+    {
+        "startDay" : "2022-04-04",
+        "imageLists" :[
+            {
+                "uploadDate" : "2022-04-04",
+                "week" : "월",
+                "imageUrl" : ["/images/a1.jpg", "/images/a2.jpg", "/images/a3.jpg"],
+                "btnStatus" : false,
+                "likeCount" : 2,
+                "sadCount" : 0
+            },
+            {
+                "uploadDate" : "2022-04-05",
                 "week" : "화",
                 "imageUrl" : ["/images/a4.jpg"],
                 "btnStatus" : false,
