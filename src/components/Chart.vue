@@ -18,19 +18,11 @@
 
 <script>
 import dayjs from 'dayjs';
-const weekOfYear = require('dayjs/plugin/weekOfYear');
-const locale = require('dayjs/locale/ko');// eslint-disable-line
-
-dayjs.extend(weekOfYear);
-dayjs.locale('ko');
-dayjs().locale('ko').format();
 
 export default {
     name : 'Chart',
     data () {
         return {
-            weekNumber : dayjs().week(),
-            today : dayjs().format('YYYY-MM-DD'),
             currentWeek : [
                 {
                     weekName : '월',
@@ -66,7 +58,8 @@ export default {
         }
     },
     props : {
-        studyLists : Array
+        studyLists : Array,
+        weekInfo : Object        
     },
     mounted () {
         this.getCurrentWeek();
@@ -83,15 +76,14 @@ export default {
             for ( let i = 0; i < 5; i++) {
                 this.currentWeek[i].date = '';
                 // day는 일요일부터 시작함에 따라 i + 1
-                this.currentWeek[i].date = dayjs().week(this.weekNumber).day(i + 1).format('YYYY-MM-DD');
+                this.currentWeek[i].date = dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD');
+                console.log(dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD'))
                 this.currentWeek[i].date === this.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false;
             }
         },
         checkStudyStatus () {
             setTimeout(() => {
-                console.log(this.studyLists.length);
                 for ( let i = 0; i < 5; i++) {
-                    
                     if(this.studyLists.length == 0) {
                         this.currentWeek[i].studyStatus = false;
                     } else {
@@ -105,13 +97,13 @@ export default {
             }, 200);
         },
         prevWeeks() {
-            this.weekNumber--;
+            this.weekInfo.currentWeek--;
             this.getCurrentWeek();
             this.checkStudyStatus();
             this.$emit('refreshList');
         },
         nextWeeks() {
-            this.weekNumber++;
+            this.weekInfo.currentWeek++;
             this.getCurrentWeek();
             this.checkStudyStatus();
             this.$emit('refreshList');

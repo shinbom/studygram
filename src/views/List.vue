@@ -4,7 +4,7 @@
       {{userInfo.nickName}}님 안녕하세요.
     </header>
     <main>
-      <chart :studyLists="imageList" @refreshList="refresh"></chart>
+      <chart :studyLists="imageList" :weekInfo="weekInfo" @refreshList="refresh"></chart>
       <div v-if="imageList.length == 0" class="no_list">
           <img src="/images/not_found.png" alt="">
           <p>학습 내용이 없습니다.<br>업로드 해주세요!</p>
@@ -40,12 +40,25 @@ import Chart from '../components/Chart.vue';
 import Comment from '../components/Comment.vue';
 import Slide from '../components/Slide.vue';
 import ImageUpload from '../components/ImageUpload.vue';
+import dayjs from 'dayjs';
+const weekOfYear = require('dayjs/plugin/weekOfYear');
+const locale = require('dayjs/locale/ko');// eslint-disable-line
+
+dayjs.extend(weekOfYear);
+dayjs.locale('ko');
+dayjs().locale('ko').format();
+
+// JSON의 날짜 정보를 입력하여, 비교하여, 리스트가 출력되도록 해야 함.
 
 export default{
   data () {
     return {
       imageList : [],
       comment : {},
+      weekInfo : {
+        currentWeek : dayjs().week(),
+        today : dayjs().format('YYYY-MM-DD'),
+      }
     }
   },
   mounted() {
