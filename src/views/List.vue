@@ -59,12 +59,12 @@ export default{
       }
     }
   },
-  mounted() {
+  created() {
     if ( window.sessionStorage.getItem('userInfo') ) {
       this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
     }
 
-    this.$nextTick(function () {
+    this.$nextTick(() => {
       // 시작하는 주의 월요일 체크
       this.weekInfo.startDay = dayjs().week(this.weekInfo.currentWeek).day(1).format('YYYY-MM-DD');
 
@@ -93,6 +93,7 @@ export default{
     getImageData() {
       const images = JSON.parse(localStorage.getItem('studyGramImages'));
       const comments = JSON.parse(localStorage.getItem('comments'));
+      console.log(images);
       let result = images.filter(item => item.startDay === this.weekInfo.startDay);
       if(result.length > 0) {
         this.imageList = result[0].imageLists;

@@ -263,6 +263,7 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
             padding:10px 0;
             text-align:center;
             transition:background-color 0.3s;
+            border:1px solid #bebebe;
             &:first-child{
                 border-radius:5px 0 0 5px;
             }
@@ -303,10 +304,10 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
                 }
             }
             &.correct{
-                background-color:#74e30b;
+                background-color:#0095f6;
             }
             &.error{
-                background-color:#e33c0b;
+                background-color:#ededed;
                 .desc{
                     text-decoration:line-through
                 }
