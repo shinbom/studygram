@@ -24,7 +24,7 @@
             {
                 "uploadDate" : "2022-04-04",
                 "week" : "월",
-                "imageUrl" : ["/images/a1.jpg", "/images/a2.jpg", "/images/a3.jpg"],
+                "imageUrl" : ["/images/b1.jpg", "/images/b2.jpg", "/images/a3.jpg"],
                 "btnStatus" : false,
                 "likeCount" : 2
             },
