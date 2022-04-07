@@ -4,7 +4,7 @@
       <div class="box">
         <nav>
           <h1>
-            <router-link to="/" @click.native="goMain">StudyGroup</router-link>
+            <router-link to="/" @click.native="goMain">StudyGram</router-link>
           </h1>
           <ul class="utils">
             <li>
