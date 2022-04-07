@@ -23,6 +23,7 @@ export default {
     name : 'Chart',
     data () {
         return {
+            studyIndex : [],
             currentWeek : [
                 {
                     weekName : '월',
@@ -77,22 +78,39 @@ export default {
                 this.currentWeek[i].date = '';
                 // day는 일요일부터 시작함에 따라 i + 1
                 this.currentWeek[i].date = dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD');
-                console.log(dayjs().week(this.weekInfo.currentWeek).day(i + 1).format('YYYY-MM-DD'))
-                this.currentWeek[i].date === this.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false;
+                this.currentWeek[i].date === this.weekInfo.today ? this.currentWeek[i].today = true : this.currentWeek[i].today = false;
             }
         },
         checkStudyStatus () {
+            // 초기화
+            this.studyIndex = [];
+            for(let i = 0; i < this.currentWeek.length; i++){
+                this.currentWeek[i].studyStatus = false;
+            }
+            
             setTimeout(() => {
                 for ( let i = 0; i < 5; i++) {
                     if(this.studyLists.length == 0) {
-                        this.currentWeek[i].studyStatus = false;
-                    } else {
-                        if(this.studyLists[i].uploadDate === this.currentWeek[i].date) {
-                            this.currentWeek[i].studyStatus = true;
-                        } else {
-                            this.currentWeek[i].studyStatus = false;
+                        this.studyIndex = []
+                    } 
+                    else {
+                        if(this.studyLists[i] !== undefined) {
+                            if(this.studyLists[i].week == '월'){
+                                this.studyIndex.push(0);
+                            } else if(this.studyLists[i].week == '화'){
+                                this.studyIndex.push(1);
+                            } else if(this.studyLists[i].week == '수'){
+                                this.studyIndex.push(2);
+                            } else if(this.studyLists[i].week == '목'){
+                                this.studyIndex.push(3);
+                            } else if(this.studyLists[i].week == '금'){
+                                this.studyIndex.push(4);
+                            }
                         }
                     }
+                }
+                for(let j = 0; j < this.studyIndex.length; j++ ) {
+                    this.currentWeek[this.studyIndex[j]].studyStatus = true;
                 }
             }, 200);
         },

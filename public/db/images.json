@@ -1,22 +1,39 @@
 [
     {
-        "startDate" : "2022-03-28",
+        "startDay" : "2022-03-28",
         "imageLists" :[
             {
                 "uploadDate" : "2022-03-28",
                 "week" : "월",
                 "imageUrl" : ["/images/a1.jpg", "/images/a2.jpg", "/images/a3.jpg"],
                 "btnStatus" : false,
-                "likeCount" : 2,
-                "sadCount" : 0
+                "likeCount" : 2
             },
             {
                 "uploadDate" : "2022-03-29",
                 "week" : "화",
                 "imageUrl" : ["/images/a4.jpg"],
                 "btnStatus" : false,
-                "likeCount" : 10,
-                "sadCount" : 0
+                "likeCount" : 10
+            }
+        ]
+    },
+    {
+        "startDay" : "2022-04-04",
+        "imageLists" :[
+            {
+                "uploadDate" : "2022-04-04",
+                "week" : "월",
+                "imageUrl" : ["/images/b1.jpg", "/images/b2.jpg", "/images/a3.jpg"],
+                "btnStatus" : false,
+                "likeCount" : 2
+            },
+            {
+                "uploadDate" : "2022-04-07",
+                "week" : "목",
+                "imageUrl" : ["/images/a4.jpg"],
+                "btnStatus" : false,
+                "likeCount" : 10
             }
         ]
     }

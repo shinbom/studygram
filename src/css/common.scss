@@ -159,13 +159,19 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
     }
     main {
         padding:20px 0 50px;
-        .no_list, > ul > li {
+        .no_list{
+            height:calc(100vh - 600px);
+        }
+        .no_list > div, > ul > li {
             overflow:hidden;
             border:1px solid #eaeaea; 
             border-radius:5px; 
             background-color:#fff;
             &:nth-child(n+2){
                 margin-top:20px;
+            }
+            &.not_found{
+                padding:40px 0;
             }
         }
         .image_thumbnail{
@@ -200,25 +206,21 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
     }
 }
 
-.uploadDate{
-    margin-right:10px;
-    float:right;
-    font-size:12px;
-    font-weight:bold;
-}
-
 .list_emotion{
     padding:10px 0;
     border-top:1px solid #eaeaea;
-    position:relative;
-    .popup{
-        padding:15px;
-        position:absolute;
-        top:-7px;
-        left:40px;
-        background-color:#fff;
-        border:1px solid #eaeaea;
-        border-radius:10px;
+    .heart svg{
+        width:28px;
+        height:28px;
+        margin-left:10px;
+    }
+    
+    .uploadDate{
+        height:28px;
+        line-height:28px;
+        margin-right:10px;
+        float:right;
+        font-weight:bold;
     }
 }
 
@@ -261,6 +263,7 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
             padding:10px 0;
             text-align:center;
             transition:background-color 0.3s;
+            border:1px solid #bebebe;
             &:first-child{
                 border-radius:5px 0 0 5px;
             }
@@ -301,10 +304,10 @@ input{height:30px; line-height:30px; padding-left:10px; border:1px solid #e0e0e0
                 }
             }
             &.correct{
-                background-color:#74e30b;
+                background-color:#0095f6;
             }
             &.error{
-                background-color:#e33c0b;
+                background-color:#ededed;
                 .desc{
                     text-decoration:line-through
                 }

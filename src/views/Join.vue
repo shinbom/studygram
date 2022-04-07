@@ -1,35 +1,37 @@
 <template>
-    <div id="join">
-        <h2>가입하기</h2>
-        <ul>
-            <li>
-                <label for="userId">아이디</label>
-                <input type="text" id="userId" ref="userId" v-model="userInfo.userId">
-            </li>
-            <li>
-                <label for="userPw">암호</label>
-                <div class="password_wrap">
-                    <input type="password" id="userPw" ref="userPw" v-model="userInfo.userPw" @keyup="checkPw" @focus="tooltipOn" @blur="tooltipOff">
-                    <div class="tooltip" :class="{active : tooltipStatus}">
-                        <ul class="pwCondition">
-                            <li :class="{'active' : pwCondition.special}">특수기호</li>
-                            <li :class="{'active' : pwCondition.length}">글자수(8자 이상)</li>
-                            <li :class="{'active' : pwCondition.upperCase}">대문자</li>
-                        </ul>
+    <div id="login_wrap">
+        <div id="join">
+            <h2>가입하기</h2>
+            <ul>
+                <li>
+                    <label for="userId">아이디</label>
+                    <input type="text" id="userId" ref="userId" v-model="userInfo.userId">
+                </li>
+                <li>
+                    <label for="userPw">암호</label>
+                    <div class="password_wrap">
+                        <input type="password" id="userPw" ref="userPw" v-model="userInfo.userPw" @keyup="checkPw" @focus="tooltipOn" @blur="tooltipOff">
+                        <div class="tooltip" :class="{active : tooltipStatus}">
+                            <ul class="pwCondition">
+                                <li :class="{'active' : pwCondition.special}">특수기호</li>
+                                <li :class="{'active' : pwCondition.length}">글자수(8자 이상)</li>
+                                <li :class="{'active' : pwCondition.upperCase}">대문자</li>
+                            </ul>
+                        </div>
+                        <input type="password" id="repeatPw" ref="repeatPw" v-model="userInfo.repeatPw" @change="repeatPwCheck" :class="{error : userInfo.repeatPw.length > 0 && repeatPwStatus == false}">
                     </div>
-                    <input type="password" id="repeatPw" ref="repeatPw" v-model="userInfo.repeatPw" @change="repeatPwCheck" :class="{error : userInfo.repeatPw.length > 0 && repeatPwStatus == false}">
-                </div>
-            </li>
-            <li>
-                <label for="nickName">닉네임</label>
-                <input type="text" id="nickName" ref="nickName" v-model="userInfo.nickName">
-            </li>
-            <li>
-                <label>카테고리</label>
-                <custom-select @setSelected="getSelectOption" :optionList="category" ref="category"></custom-select>
-            </li>
-        </ul>
-        <button type="button" class="btn" @click="memberJoin">가입하기</button>
+                </li>
+                <li>
+                    <label for="nickName">닉네임</label>
+                    <input type="text" id="nickName" ref="nickName" v-model="userInfo.nickName">
+                </li>
+                <li>
+                    <label>카테고리</label>
+                    <custom-select @setSelected="getSelectOption" :optionList="category" ref="category"></custom-select>
+                </li>
+            </ul>
+            <button type="button" class="btn" @click="memberJoin">가입하기</button>
+        </div>
     </div>
 </template>
 <script>

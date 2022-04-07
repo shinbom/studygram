@@ -16,6 +16,7 @@ export default new Vuex.Store({
   mutations: {
     successLogin (state, payload) {
       this.state.isAuth = true;
+      console.log(payload);
       state.userInfo.id = payload.userId;
       state.userInfo.nickName = payload.nickName;
       state.userInfo.joinedDate = payload.joinedDate;

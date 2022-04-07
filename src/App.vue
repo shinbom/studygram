@@ -4,7 +4,7 @@
       <div class="box">
         <nav>
           <h1>
-            <router-link to="/" @click.native="goMain">StudyGroup</router-link>
+            <router-link to="/" @click.native="goMain">StudyGram</router-link>
           </h1>
           <ul class="utils">
             <li>
@@ -28,11 +28,6 @@ import {mapState, mapMutations} from 'vuex';
 
 export default{
   name : '',
-  mounted() {
-    if ( window.sessionStorage.getItem('userInfo') ) {
-      this.$store.commit('successLogin', JSON.parse(window.sessionStorage.getItem('userInfo')));
-    }
-  },
   computed : {
     ...mapState(['userInfo', 'isAuth']),
   },

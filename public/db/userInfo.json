@@ -1,14 +1,8 @@
 [
    {
       "userId":"test",
-      "nickName":"테스트",
+      "nickName":"공부뿐이야",
       "joinedDate" : "2021-03-15",
       "count":0
-   },
-   {
-      "userId":"test",
-      "nickName":"테스트",
-      "joinedDate" : "2021-03-15",
-      "count":0
-   },
+   }
  ]
